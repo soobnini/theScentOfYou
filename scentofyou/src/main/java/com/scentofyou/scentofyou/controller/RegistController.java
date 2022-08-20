@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.scentofyou.scentofyou.domain.User;
 import com.scentofyou.scentofyou.service.UserRegistValidator;
 import com.scentofyou.scentofyou.service.UserService;
-
+@Controller
 public class RegistController {
 	
 	@Autowired
@@ -31,7 +32,7 @@ public class RegistController {
 	@GetMapping("/scentofyou/register.do")
 	public String showForm (Model model) {
 		model.addAttribute("userCommand", new UserCommand());
-		return "registerForm";
+		return "thymeleaf/myPages/RegistForm";
 	}
 	
 	@PostMapping("/scentofyou/register.do") 
@@ -64,7 +65,7 @@ public class RegistController {
 			}
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('회원가입에 성공하였습니다'); location.href='/book/login.do';</script>");
+			out.println("<script>alert('회원가입에 성공하였습니다'); location.href='/scentofyou/login.do';</script>");
 			out.flush();
 		}
 		

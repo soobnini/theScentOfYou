@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+   <link type="text/css" rel="stylesheet" href="mainStyle.css">
+  <!--  부트스트랩 웹폰트  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+  rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript">   
+  $(document).ready( function() {
+    $("#headers").load("../default.html");  // 원하는 파일 경로를 삽입하면 된다
+  });
+</script>
+</head>
+
+<body>
+  
+  <div class="container">
+   <div id="headers"></div>
+    <div id="mask"></div>
+   <div id="space"></div>
+    
+   <div class="row">
+      <div id="favor" class="col-8">
+        <h4><i class="bi bi-bookmark-star-fill" id="icon"></i> 즐겨찾기 목록 </h4>
+        <a href="https://www.google.co.kr"><img id="iconR" src="../icon/google.png"></a>
+        <a href="https://www.facebook.com"><img id="iconR" src="../icon/facebook.png"></a>
+        <a href="https://www.kakao.com"><img id="iconR" src="../icon/kakaotalk.png"></a>
+        <a href="https://www.naver.com/"><img id="iconR" src="../icon/naver.png"></a>
+        <h4><i class="bi bi-share" id="iconR"></h4></i> 
+        <iframe name="favorFrame"></iframe>
+        <!-- 향조의 종류별 향수 카테고리 
+             사용자 - 향조 선택 - 향수 카테고리 목록 
+             미구현 ) 이름 옆에 별 아이콘으로 사용자의 즐겨찾기 목록에 추가  -->   
+      </div>
+        <div id="side" class="col-4">
+          <ul>
+            <li>
+              <div id="profile" >
+                <h4>로그인/회원가입</h4>
+                <div id="in">
+                  <button value="login" id="login">로그인</button>
+                  <button value="signin" id="signin">회원가입</button>
+                </div>
+                <!-- 사용자 버튼 클릭 선택 - 로그인 / 회원가입 -->
+              </div>
+            </li>
+            <li>
+              <div id="search" >
+                <h4>향수검색</h4>
+                <iframe name="searchFrame"></iframe>
+                <!-- 사용자 - 가격, 브랜드 선택 검색필터 
+                     인기 향수 목록 -->
+              </div>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

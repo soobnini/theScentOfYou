@@ -1,0 +1,43 @@
+.container{
+    height: 100%;
+    background-image: url('../img/background2.png');
+    background-size: cover;
+  }
+
+.content {
+    background: rgba(255, 255, 255, 1);
+    padding: 5em;
+    
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    width: fit-content;
+    margin: auto;
+}
+
+
+table {
+    width: fit-content;
+}
+
+
+.profile {
+    width: 375px;
+}
+
+.num {
+    width: 124px;
+}
+
+.td2 {
+    width: fit-content;
+}
+
+.btn1 {
+    text-align: center;
+    margin: auto;
+}
