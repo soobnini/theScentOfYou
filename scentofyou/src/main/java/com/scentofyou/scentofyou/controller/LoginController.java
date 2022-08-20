@@ -23,7 +23,7 @@ public class LoginController {
 	
 	@GetMapping("/scentofyou/login.do")
 	public String login () {
-		return "login";
+		return "thymeleaf/myPages/login";
 	}
 	
 
@@ -31,8 +31,8 @@ public class LoginController {
 	public ModelAndView handleRequest(
 			HttpSession session,
 			HttpServletResponse response,
-			@RequestParam("id") String id,
-			@RequestParam("password") String password,
+			@RequestParam("_id") String id,
+			@RequestParam("pwd") String password,
 			Model model) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
@@ -52,15 +52,15 @@ public class LoginController {
 			User userSession = new User();
 			userSession = user;
 			model.addAttribute("userSession", userSession);
-			mav.setViewName("redirect:/Main.do");
+			mav.setViewName("redirect:/scentofyou/Main.do");
 		}
-		session.setAttribute("user", user);
+		session.setAttribute("userSession", user);
 		return mav;
 	}
 	
 	@GetMapping("/scentofyou/logout.do")
 	public String handleRequest(HttpSession session) throws Exception {
 		session.invalidate();
-		return "redirect:/book.do";
+		return "redirect:/scentofyou/Main.do";
 	}
 }

@@ -1,0 +1,94 @@
+.background{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    margin: 2em;
+    padding: 1em;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  .background h2{
+    margin-left: 1em;
+    margin-top: 1%;
+  }
+  span{
+    display: inline-block;
+    margin: 1em;
+    margin-left: 1em;
+    padding: 3px;
+  }
+  
+  span:hover{
+    background-color: #8B2C944D;
+  }
+  
+  iframe{
+    margin: 2%;
+    border: 3px solid black;
+    background-color:white;
+    width: 96%;
+    /* height: 30em; */
+  }
+  .container{
+    height: 100vh;
+    background-image: url('../img/background2.png');
+    background-size: cover;
+  }
+  /* 연령에 따른 */
+  .background2{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    margin: 2em;
+    padding: 6em;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    height: 80vh;
+    text-align: center;
+  }
+
+  .icon {
+    width: 80px;
+    height: 80px;
+}
+
+.loginbtn {
+    width: 357px;
+    height: 37.29px;
+
+    box-sizing: border-box; 
+    background-color: rgba(0, 0, 0, 0);
+    border: 1.38104px solid rgba(108, 176, 198, 0.7);
+    border-radius: 3.45261px; 
+
+    /* vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+    cursor: pointer;
+
+    width: 260px;
+    border-color: aqua; */
+
+    /* */
+}
+
+.loginForm {
+    margin: auto;
+    width: 357px;
+    height: 169.93px;
+    text-align: left;
+    line-height: 10px;
+}
+
+.input {
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    width: 357px;
+    height: 37.29px;
+
+    border: 0.690522px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3.45261px;
+
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.7);
+}
