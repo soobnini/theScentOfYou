@@ -80,13 +80,20 @@
         <div id="side" class="col-4">
           <ul>
             <li>
-              <div id="profile" >
+            <!-- 로그인x -->
+              <div th:if ="${session.userSession == null}" id="profile" >
                 <h4>로그인/회원가입</h4>
                 <div id="in">
-                  <button value="login" id="login">로그인</button>
-                  <button value="signin" id="signin">회원가입</button>
+                  <button value="login" id="login">로그인</button> <!-- TODO: <자바스크립트>onclick action으로 /scentofyou/login.do로 이동 -->
+                  <button value="signin" id="signin">회원가입</button><!-- TODO: <자바스크립트>onclick action으로 /scentofyou/register.do로 이동 -->
                 </div>
                 <!-- 사용자 버튼 클릭 선택 - 로그인 / 회원가입 -->
+              </div>
+              <!-- 로그인o -->
+              <div th:if ="${session.userSession != null}" id="profile" >
+                <h4>프로필</h4>
+                <iframe name="profileFrame"></iframe>
+                <!-- 프로필 사진, 이름, 나이, 성별 -->
               </div>
             </li>
             <li>
