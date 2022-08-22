@@ -32,7 +32,7 @@ public class RegistController {
 	@GetMapping("/scentofyou/register.do")
 	public String showForm (Model model) {
 		model.addAttribute("userCommand", new UserCommand());
-		return "thymeleaf/myPages/RegistForm";
+		return "thymeleaf/myPages/signUp";
 	}
 	
 	@PostMapping("/scentofyou/register.do") 
@@ -43,7 +43,7 @@ public class RegistController {
 		
 		validator.validateUserCommand(userCommand, result);
 		if (result.hasErrors()) { // 오류 있는 경우
-			mav.setViewName("registerForm");//회원가입 폼으로
+			mav.setViewName("thymeleaf/myPages/signUp");//회원가입 폼으로
 		}
 		else { // 오류 없는 경우
 			mav.setViewName("login");
