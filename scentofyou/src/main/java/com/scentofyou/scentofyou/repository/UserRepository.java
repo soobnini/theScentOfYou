@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.scentofyou.scentofyou.domain.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 	
-	Optional<User> findByUserId(String userId) throws DataAccessException;
+	User findByUserId(String userId) throws DataAccessException;
 	
 	User findByUserIdAndUserPwd(String userId, String password) throws DataAccessException;
 }

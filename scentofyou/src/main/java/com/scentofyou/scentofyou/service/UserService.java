@@ -36,8 +36,8 @@ public class UserService {
 	}
 	
 	public User isUserExist(String id) {
-		Optional<User> result = userRepository.findByUserId(id);
-		return result.get();
+		User result = userRepository.findByUserId(id);
+		return result;
 	}
 	
 	public User getSession(String userId, String password) {

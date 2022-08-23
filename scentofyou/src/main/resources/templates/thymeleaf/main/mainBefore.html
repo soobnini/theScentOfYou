@@ -41,7 +41,8 @@
         <div id="side" class="col-4">
           <ul>
             <li>
-              <div id="profile" >
+              <div th:if ="${session.userSession == null}" id="profile" >
+              <>
                 <h4>로그인/회원가입</h4>
                 <div id="in">
                   <button value="login" id="login">로그인</button>

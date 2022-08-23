@@ -1,6 +1,6 @@
 package com.scentofyou.scentofyou.domain;
+
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,16 +16,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 @SuppressWarnings("serial")
 @Entity
-@Table(name="Perfume_scent")
+@Table(name = "Perfume_Base")
 @Data
-@AllArgsConstructor 
+@AllArgsConstructor
 @NoArgsConstructor
-public class PerfumeScent implements Serializable{
+public class PerfumeBase implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="name")
-	private String name;
+	@ManyToOne
+	@JoinColumn(name="Perfume_scent_id")
+	private PerfumeScent perfumeScent;
+	
+	@ManyToOne
+	@JoinColumn(name="Perfume_perfume_id")
+	private Perfume perfume;
 }
