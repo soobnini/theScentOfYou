@@ -2,6 +2,7 @@ package com.scentofyou.scentofyou.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.scentofyou.scentofyou.domain.User;
@@ -28,11 +30,12 @@ public class RegistController {
 	public void setValidator(UserRegistValidator validator) {
 		this.validator = validator;
 	}
+	
 
 	@GetMapping("/scentofyou/register.do")
 	public String showForm (Model model) {
 		model.addAttribute("userCommand", new UserCommand());
-		return "thymeleaf/myPages/signUp";
+		return "thymeleaf/myPages/signup";
 	}
 	
 	@PostMapping("/scentofyou/register.do") 
@@ -43,7 +46,8 @@ public class RegistController {
 		
 		validator.validateUserCommand(userCommand, result);
 		if (result.hasErrors()) { // 오류 있는 경우
-			mav.setViewName("thymeleaf/myPages/signUp");//회원가입 폼으로
+			mav.setViewName("thymeleaf/myPages/signup");//회원가입 폼으로
+			mav.addObject("userCommand",userCommand);
 		}
 		else { // 오류 없는 경우
 			mav.setViewName("login");
