@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.scentofyou.scentofyou.domain.User;
+import com.scentofyou.scentofyou.domain.Perfume;
+import com.scentofyou.scentofyou.domain.PerfumeLikes;
 import com.scentofyou.scentofyou.domain.SearchText;
 import com.scentofyou.scentofyou.service.UserService;
 
@@ -30,10 +32,12 @@ public class MypageController {
 		}
 		else { // 로그인이 되어있는 경우
 			User user = userService.getUser(userSession.getId());
-			List<SearchText> searchText = userService.getSerchTextList(user.getId());
+			List<SearchText> searchText = userService.getSerchTextList(user);
+			List<PerfumeLikes> LikesList = userService.getLikePerfumeList(user);
 			mav.setViewName("thymeleaf/myPages/myPage");
 			mav.addObject("user", user);
-			mav.addObject("searchText", searchText);
+			mav.addObject("searchTextList", searchText);
+			mav.addObject("LikeList",LikesList);
 		}	
 		
 		return mav;

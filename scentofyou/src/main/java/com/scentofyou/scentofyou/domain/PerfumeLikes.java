@@ -22,26 +22,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor 
 @NoArgsConstructor
 class LikesPK implements Serializable {
-	int perfume;
 	int user;
+	int perfume;
 }
 @SuppressWarnings("serial")
 @Entity
-@Table(name="Perfume_Likes")
+@Table(name="Likes")
 @Data
 @AllArgsConstructor 
 @NoArgsConstructor
 @IdClass(LikesPK.class)
 public class PerfumeLikes implements Serializable{
 	@Id
-	@ManyToOne(targetEntity = Perfume.class)
-	@JoinColumn(name="Perfume_perfume_id")
-	private Perfume perfume;
-	@Id
 	@ManyToOne(targetEntity = User.class)
 	@JoinColumn(name="User_id")
 	private User user;
-	
-	@Column(name="star")
-	private double star;
+	@Id
+	@ManyToOne(targetEntity = Perfume.class)
+	@JoinColumn(name="Perfume_perfume_id")
+	private Perfume perfume;
 }

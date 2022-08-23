@@ -10,7 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.scentofyou.scentofyou.domain.User;
 import com.scentofyou.scentofyou.domain.SearchText;
 
-public interface SearchTextRepository extends JpaRepository<User, Integer> {
+public interface SearchTextRepository extends CrudRepository<SearchText, Integer> {
 	
-	List<SearchText> findByUserId(int userId) throws DataAccessException;
+	List<SearchText> findByUser(User user) throws DataAccessException;
 }
