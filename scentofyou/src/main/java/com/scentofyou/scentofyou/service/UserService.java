@@ -71,4 +71,8 @@ public class UserService {
 		}
 		return result;
 	}
+	@Transactional
+	public void deleteFavor(Perfume perfume) {
+		perfumeLikesRepository.deleteByPerfume(perfume);
+	}
 }

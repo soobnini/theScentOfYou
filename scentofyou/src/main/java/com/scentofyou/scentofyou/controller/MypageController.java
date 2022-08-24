@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
@@ -21,6 +23,7 @@ import com.scentofyou.scentofyou.domain.User;
 import com.scentofyou.scentofyou.domain.Perfume;
 import com.scentofyou.scentofyou.domain.PerfumeLikes;
 import com.scentofyou.scentofyou.domain.SearchText;
+import com.scentofyou.scentofyou.service.PerfumeService;
 import com.scentofyou.scentofyou.service.UserRegistValidator;
 import com.scentofyou.scentofyou.service.UserService;
 
@@ -28,11 +31,44 @@ import com.scentofyou.scentofyou.service.UserService;
 public class MypageController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private PerfumeService perfumeService;
 	
 	@Autowired
 	private UserRegistValidator validator;
 	public void setValidator(UserRegistValidator validator) {
 		this.validator = validator;
+	}
+	
+	@GetMapping("/scentofyou/favor.do")
+	public ModelAndView showfavor (HttpServletRequest request) {
+		User userSession = 
+				(User) WebUtils.getSessionAttribute(request, "userSession");
+		ModelAndView mav = new ModelAndView();
+	
+		if (userSession == null) { // 로그인이 안되어있는 경우
+			mav.setViewName("thymeleaf/mypages/login");
+		}
+		else { // 로그인이 되어있는 경우
+			User user = userService.getUser(userSession.getId());
+			List<PerfumeLikes> LikesList = userService.getLikePerfumeList(user);
+			mav.setViewName("thymeleaf/perfumes/favorList");
+			mav.addObject("user", user);
+			mav.addObject("LikeList",LikesList);
+		}	
+		
+		return mav;
+	}
+	@RequestMapping("/scentofyou/deleteFavor/{perfumeId}.do")
+	public String deleteFavor(@PathVariable int perfumeId) {
+		try {
+			Perfume perfume = perfumeService.getPerfume(perfumeId);
+			userService.deleteFavor(perfume);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/scentofyou/favor.do";
 	}
 	
 	@GetMapping("/scentofyou/mypage.do")
@@ -62,11 +98,11 @@ public class MypageController {
 		User userSession = 
 				(User) WebUtils.getSessionAttribute(request, "userSession");
 		if (userSession == null) { // 로그인이 안되어있는 경우
-			return "thymeleaf/myPages/login";
+			return "thymeleaf/mypages/login";
 		}
 		
 		model.addAttribute("userCommand", new UserCommand());
-		return "thymeleaf/myPages/signUp";
+		return "thymeleaf/mypages/profile";
 	}
 	
 	@PostMapping("/scentofyou/updateProfile.do") 
@@ -74,36 +110,29 @@ public class MypageController {
 			@ModelAttribute("userCommand") UserCommand userCommand,
 			BindingResult result) throws IOException {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(userCommand);
 		
-		validator.validateUserCommand(userCommand, result);
-		if (result.hasErrors()) { // 오류 있는 경우
-			mav.setViewName("thymeleaf/myPages/profile");//회원가입 폼으로
-		}
-		else { // 오류 없는 경우
-			mav.setViewName("myPages/mypage");
 			
 			User userSession = 
 					(User) WebUtils.getSessionAttribute(request, "userSession");
 			
 			User user = new User();
-			user.setId(userSession.getId());//createUser시 ID가 있으면 자동으로 update
-			user.setUserId(userSession.getUserId());//ID는 변경불가
+			user = userSession;
 			user.setUserPwd(userCommand.getPassword());
-			user.setUserAge(userCommand.getAge());
-			user.setUserName(userCommand.getName());
 			user.setUserPhone(userCommand.getPhone());
-			user.setUserGender(userCommand.getGender());
 			try {
 				userService.CreateUser(user);
 			}
 			catch(Exception e) {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
 				e.printStackTrace();
+				out.println("<script>alert('프로필 수정 실패'); location.href='/scentofyou/Main.do';</script>");
 			}
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('프로필 수정 성공'); location.href='/scentofyou/mypage.do';</script>");
+			out.println("<script>alert('프로필 수정 성공'); location.href='/scentofyou/Main.do';</script>");
 			out.flush();
-		}
 		
 		return mav;
 	}

@@ -15,4 +15,5 @@ import com.scentofyou.scentofyou.domain.User;
 
 public interface PerfumeLikesRepository extends JpaRepository<PerfumeLikes, Integer> {
 	List<PerfumeLikes> findAllByUser(User user)throws DataAccessException;
+	void deleteByPerfume(Perfume perfume) throws DataAccessException;
 }

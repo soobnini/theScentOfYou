@@ -25,36 +25,45 @@
     <div id="mask"></div>
    <div id="space"></div>
     
-   <div class="row">
-      <div id="favor" class="col-8">
-        <h4><i class="bi bi-bookmark-star-fill" id="icon"></i> 즐겨찾기 목록 </h4>
-        <a href="https://www.google.co.kr"><img id="iconR" src="../icon/google.png"></a>
-        <a href="https://www.facebook.com"><img id="iconR" src="../icon/facebook.png"></a>
-        <a href="https://www.kakao.com"><img id="iconR" src="../icon/kakaotalk.png"></a>
-        <a href="https://www.naver.com/"><img id="iconR" src="../icon/naver.png"></a>
-        <h4><i class="bi bi-share" id="iconR"></h4></i> 
-        <iframe name="favorFrame"></iframe>
-        <!-- 향조의 종류별 향수 카테고리 
-             사용자 - 향조 선택 - 향수 카테고리 목록 
-             미구현 ) 이름 옆에 별 아이콘으로 사용자의 즐겨찾기 목록에 추가  -->   
+   <div class="row" id="ma">
+    <div id="favor" class="col-8">
+      <h4>인기 향수 TOP3</h4>
+      <div id="popular">
+        <span>
+          <p id="number">1</p>
+          <img src="../img/554X554.jpeg" width="230" height="210">
+          <p id="pfname">향수 이름</p>
+        </span>
+        <span>
+          <p id="number">2</p>
+          <img src="../img/554X554.jpeg" width="230" height="210">
+          <p id="pfname">향수 이름</p>
+        </span>
+        <span>
+          <p id="number">3</p>
+          <img src="../img/554X554.jpeg" width="230" height="210">
+          <p id="pfname">향수 이름</p>
+        </span>
       </div>
-        <div id="side" class="col-4">
+    </div>
+        <div class="col-4">
           <ul>
             <li>
-              <div th:if ="${session.userSession == null}" id="profile" >
-              <>
+              <div id="profile" >
                 <h4>로그인/회원가입</h4>
                 <div id="in">
-                  <button value="login" id="login">로그인</button>
-                  <button value="signin" id="signin">회원가입</button>
+                  <a href="../mypages/login.html"><button value="login" id="login">로그인</button></a>
+                  <a href="../mypages/signup.html"><button value="signin" id="signin">회원가입</button></a>
                 </div>
                 <!-- 사용자 버튼 클릭 선택 - 로그인 / 회원가입 -->
               </div>
             </li>
-            <li>
+            <li id="sideli">
               <div id="search" >
                 <h4>향수검색</h4>
-                <iframe name="searchFrame"></iframe>
+                <div id="sides">
+                  <a href="../mypages/beforelogin.html"><button value="link" id="linkbtn">검색창 바로가기</button></a>
+                </div>
                 <!-- 사용자 - 가격, 브랜드 선택 검색필터 
                      인기 향수 목록 -->
               </div>

@@ -106,3 +106,8 @@ article {
   float: right;
   padding: 10px;
 }
+
+@font-face {
+  font-family: 'Gmarket Sans TTF';
+  src: url('../font/GmarketSansTTFLight.ttf') format('truetype');
+}
