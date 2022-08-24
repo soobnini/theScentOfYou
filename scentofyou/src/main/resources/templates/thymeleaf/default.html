@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-   <link type="text/css" rel="stylesheet" href="../default.css">
+   <link th:href="@{/css/default.css}" rel="stylesheet" />
   <!--  부트스트랩 웹폰트  -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
   rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -17,26 +17,28 @@
 </head>
 
 <body>
-  
   <div class="container1">
    
     <div id="mainGround">
     <!-- 메뉴바 : 비율별로 다르게 보이는 부트스트랩을 적용 예정 -->
       <article class="nav">
-        <div class="title"><a href="../main/main.html">The Scent Of You</a></div>
+        <div class="title" th:onclick="|location.href='@{/scentofyou/Main.do}'|">The Scent Of You</div>
         <ul id="menu" class="nav justify-content-between">
           <li class="nav-item"><a href="../testPages/testStart.html"  class="nav-link">향수 취향 테스트</a></li>
           <li class="nav-item"><a href="../testPages/testResult.html"  class="nav-link">테스트 결과 확인</a></li>
           <li class="nav-item">
             <ul id="nav3" class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-box-arrow-in-right"></i></a>
+                <li th:if ="${session.userSession != null}" class="nav-item">
+                    <a class="nav-link" href="/scentofyou/logout.do"><i class="bi bi-box-arrow-in-right"></i></a>
+                </li>
+                <li th:if ="${session.userSession == null}" class="nav-item">
+                    <a class="nav-link" href="/scentofyou/login.do"><i class="bi bi-box-arrow-in-right"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../mypages/mypage.html"><i class="bi bi-person"></i></a>
+                    <a class="nav-link" href="/scentofyou/updateProfile.do"><i class="bi bi-person"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../main/main.html"><i class="bi bi-house-door"></i></a>
+                    <a class="nav-link" href="/scentofyou/Main.do"><i class="bi bi-house-door"></i></a>
                 </li>
             </ul>
           </li>
@@ -46,8 +48,8 @@
                 <div class="menu_name"><i class="bi bi-list"></i> 카테고리</div>
                 <ul class="menu_list">
                   <li>구매그래프</li>
-                  <li><a class="nav-link" href="#"> - 성별</a></li>
-                  <li><a class="nav-link" href="#"> - 연령</a></li>
+                  <li><a class="nav-link" href="/scentofyou/graphGender.do"> - 성별</a></li>
+                  <li><a class="nav-link" href="/scentofyou/graphAge.do"> - 연령</a></li>
                 </ul>
                 <ul class="menu_list">
                   <li>향수구매처</li>
@@ -57,8 +59,7 @@
                   <li><a class="nav-link" href="https://www.hmall.com/p/dpa/searchSectItem.do?sectId=2731163&GnbGroup=AllCategory&Code=03">- 현대백화점</a></li>
                 </ul>
                 <ul class="menu_list">
-                  <li><a href="#">향수 별점 분석</a></li>
-                  <li><a href="../mypages/mypage.html">마이 페이지</a></li>
+                  <li><a href="/scentofyou/favor.do">즐겨찾기 목록</a></li>
                 </ul>
               </div>
               <script type="text/javascript">

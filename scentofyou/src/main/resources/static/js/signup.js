@@ -26,7 +26,7 @@ $( document ).ready( function() {
         success : function(data){
             if(data === "true"){
                 alert("사용할 수 없는 아이디입니다.");
-                $('#_id').val()='';
+                $('#_id').value()='';
                 $('#_id').focus();
             } else{
                 alert("사용 가능한 아이디입니다.");

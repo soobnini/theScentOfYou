@@ -14,7 +14,7 @@
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">   
   $(document).ready( function() {
-    $("#headers").load("../default.html");  // 원하는 파일 경로를 삽입하면 된다
+    $("#headers").load("/scentofyou/default.do");  // 원하는 파일 경로를 삽입하면 된다
   });
 </script>
 </head>
@@ -27,24 +27,17 @@
     <div class="background2">
         <h2>로그인</h2><br><br>
         <div class="loginForm">
-      <form method ="post" action = "/scentofyou/login.do">
+     <form method ="post" action = "/scentofyou/login.do">
         <input class="input" type="text" name="_id" size="30" placeholder="ID" required>
         <br><br>
         <input class="input" type="password" name="pwd" size="30" placeholder="PASSWORD" required>
         <br><br>
-        <!-- <input type="checkbox" name="auto"> 자동 로그인 -->
+        <input type="checkbox" name="auto" id="auto"> <label for="auto">자동 로그인</label>
         <br><br>
         <input type="submit" value="로그인" class="loginbtn">
-    </form></div>
-        <a href="#">아이디 찾기</a> / <a href="#">비밀번호 찾기</a>
+      </form></div>
+        <a href="findmyID.html">아이디 찾기</a> / <a href="findmyPwd.html">비밀번호 찾기</a>
         <br><br><br>
-     <!--  <div class="social-login">
-        <h2>간편 로그인</h2><br>
-        <a href="#"><img class="icon" src="../icon/naver.png"></a>&nbsp;&nbsp;
-        <a href="#"><img class="icon" src="../icon/kakaotalk.png"></a>&nbsp;&nbsp;
-        <a href="#"><img class="icon" src="../icon/facebook.png"></a>&nbsp;&nbsp;
-        <a href="#"><img class="icon" src="../icon/google.png"></a>
-      </div> -->
       
     </div>
   </div>
