@@ -29,14 +29,16 @@
         <div class="row">
           <div class="col-6">
             <figure>
-              <img id="here" th:src="${perfume.perfumeImg}" width="600" height="820">
+              <img id="here" th:src="${perfume.perfumeImg}">
               <figcaption th:text="${perfume.name}">샤넬 N°5 로 오 드 뚜왈렛</figcaption>
             </figure>
           </div>
           <div class="col-6">
             <div class="rightSide">
               <h2>향조</h2>
-              <iframe name="perfumeData" value=":original_view=yes" th:src="@{https://public.tableau.com/views/_16612395973200/1_1?:language=ja-JP&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true&perfume_id={perfumeId}(perfumeId=${perfume.id})}" ></iframe>
+               <div id="frame">
+              <iframe name="perfumeData"  scrolling ="no"  th:src="@{https://public.tableau.com/views/_16612395973200/1_1?:language=ja-JP&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true:original_view=yes&perfume_id={perfumeId}(perfumeId=${perfume.id})}" ></iframe>
+            </div>
             </div>
             <div class="rightSide">
               <span>

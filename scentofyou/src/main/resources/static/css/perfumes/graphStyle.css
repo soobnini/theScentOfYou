@@ -4,7 +4,6 @@
   padding: 10%;
 }
 .container{
-  /* height: 100vh; */
   background-image: url('/images/background2.png');
   background-size: cover;
   font-family: 'Gmarket Sans TTF';
@@ -21,15 +20,18 @@ span:hover{
   background-color: #8B2C944D;
 }
 
+/* 8.25.목 12시 수정사항 */
 iframe{
-  margin: 1em;
   width: 100%;
-  height: 83vh;
+  height: 100%;
 }
 #frame{
   margin-right: 1.5em;
   margin-bottom: 1em;
+  width: 75em;
+  height: 50em;
 }
+/* css는 위의 두 블록만 수정하였습니다. */
 
 /* 성별에 따른 그래프 페이지 */
 .background{
